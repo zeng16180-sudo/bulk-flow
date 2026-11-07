@@ -1,0 +1,53 @@
+{
+  "retrieved": "2026-09-20",
+  "unctad": {
+    "url": "https://unctad.org/system/files/official-document/rmt2025_en.pdf",
+    "report": "Review of Maritime Transport 2025",
+    "period": 2024,
+    "deliveryGT": 19072485,
+    "soldForScrapGT": 2054700,
+    "fleetDWT20240101": 1006329000,
+    "fleetDWT20250101": 1036158000,
+    "tables": [
+      "II.5",
+      "II.6",
+      "II.7"
+    ]
+  },
+  "bimco": {
+    "url": "https://cyprusshippingnews.com/wp-content/uploads/2026/01/Dry-Bulk-Shipping-Market-Overview-Outlook-January-2026.pdf",
+    "vintage": "2026-01",
+    "status": "historical forecast, not latest",
+    "deliveryMillionDWT": {
+      "2026": ">40",
+      "2027": ">40"
+    },
+    "recyclingMillionDWT": {
+      "2026": 5.8,
+      "2027": 7.7
+    },
+    "fleetGrowthPct": {
+      "2026": 3,
+      "2027": 3.5
+    },
+    "orderbookAtEnd2025MillionDWT": 121.8,
+    "orderbookFleetPct": 11.4
+  },
+  "display": "future forecasts only; UNCTAD historical data not displayed",
+  "bimcoJuly2026": {
+    "url": "https://cyprusshippingnews.com/2026/07/31/bimco-dry-bulk-shipping-market-overview-outlook-2/",
+    "forecastYear": 2027,
+    "effectiveSupplyGrowthPct": {
+      "straitClosed": [
+        3.5,
+        4.5
+      ],
+      "straitOpenBy2026Q3": [
+        4.0,
+        5.0
+      ]
+    },
+    "openScenarioDerivation": "closed scenario plus 0.5 percentage points",
+    "sourceType": "BIMCO statement republished by Cyprus Shipping News"
+  }
+}
