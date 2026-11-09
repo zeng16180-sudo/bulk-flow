@@ -649,5 +649,7 @@
   "retrieved": "2026-11-07",
   "unit": "metric tonnes",
   "scope": "Port Hedland, Iron Ore, LOAD, global destinations, departure month",
-  "note": "57 display months, plus December 2021 for MoM. Three months use official rounded press-release values, marked approximate. PDFs retained as source URLs and extracted raw text."
+  "note": "57 display months, plus December 2021 for MoM. Three months use official rounded press-release values, marked approximate. PDFs retained as source URLs and extracted raw text.",
+  "checked": "2026-11-09",
+  "latestAvailabilityNote": "Official index checked; latest detailed iron ore month remains 2026-09. Original verified history retained."
 }

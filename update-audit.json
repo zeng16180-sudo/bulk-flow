@@ -1,0 +1,671 @@
+{
+  "checked": "2026-11-09",
+  "timezone": "Asia/Taipei",
+  "deployment": "Local files updated; GitHub Pages not published by this task.",
+  "brazil": {
+    "source": "https://api-comexstat.mdic.gov.br/general?language=en",
+    "release": "https://www.gov.br/mdic/pt-br/assuntos/comercio-exterior/estatisticas/informativos/informativo-2026-050",
+    "published": "2026-11-06",
+    "latestPeriod": "2026-10",
+    "scope": "Export; heading1001/1005/1201/2601; via01(sea); all destinations; metricKG/1000",
+    "latest": {
+      "wheat": {
+        "period": "2026-10",
+        "tonnes": 0.339,
+        "previousMonth": 0.318,
+        "previousYear": 0,
+        "MoM": 6.60377358490567,
+        "YoY": null
+      },
+      "corn": {
+        "period": "2026-10",
+        "tonnes": 5683023.338,
+        "previousMonth": 5207140.704,
+        "previousYear": 6429296.37,
+        "MoM": 9.139039274172855,
+        "YoY": -11.60738265982284
+      },
+      "soy": {
+        "period": "2026-10",
+        "tonnes": 6343942.498,
+        "previousMonth": 7358391.643,
+        "previousYear": 6727730.211,
+        "MoM": -13.786289099806758,
+        "YoY": -5.7045645554053
+      },
+      "iron": {
+        "period": "2026-10",
+        "tonnes": 35518770.85,
+        "previousMonth": 32860389.83,
+        "previousYear": 39374258.508,
+        "MoM": 8.08992538966482,
+        "YoY": -9.79189908355137
+      }
+    },
+    "retainedZeros": [
+      {
+        "commodity": "wheat",
+        "period": "2025-06",
+        "tonnes": 0,
+        "evidence": "Existing history-data.js CSV-confirmed zero; API omits zero rows."
+      },
+      {
+        "commodity": "wheat",
+        "period": "2025-10",
+        "tonnes": 0,
+        "evidence": "Existing history-data.js CSV-confirmed zero; API omits zero rows."
+      }
+    ],
+    "missingNote": "Absent API rows are omitted, not converted to zero. Older CSV-confirmed zeros retained and identified.",
+    "queryNote": "Cross-year query ending10 restricts all years to Jan-Oct. Final history uses2020-2025 Jan-Dec plus2026 Jan-Oct."
+  },
+  "usda": {
+    "source": "https://agtransport.usda.gov/resource/sruw-w49i.json",
+    "sourcePage": "https://agtransport.usda.gov/Exports/Grain-Inspections/sruw-w49i",
+    "officialReport": "https://www.ams.usda.gov/mnreports/wa_gr101.txt",
+    "published": "2026-11-02",
+    "latestPeriod": "2026-10-29",
+    "scope": "date,grain,sum(mt), type_carrier_text='SHIP'; export inspections, not export sales. Not the all-carrier totals in WA_GR101.",
+    "latest": {
+      "wheat": {
+        "period": "2026-10-29",
+        "tonnes": 35732.0,
+        "previousWeek": 129923.0,
+        "previousWeekPeriod": "2026-10-22",
+        "previousYear": 337018.0,
+        "previousYearPeriod": "2025-10-30",
+        "fourWeekAverage": 164473.0,
+        "WoW": -72.49755624485272,
+        "YoY": -89.39759894130283
+      },
+      "corn": {
+        "period": "2026-10-29",
+        "tonnes": 560591.0,
+        "previousWeek": 377391.0,
+        "previousWeekPeriod": "2026-10-22",
+        "previousYear": 1334880.0,
+        "previousYearPeriod": "2025-10-30",
+        "fourWeekAverage": 616231.75,
+        "WoW": 48.5438179500836,
+        "YoY": -58.004389907707065
+      },
+      "soy": {
+        "period": "2026-10-29",
+        "tonnes": 2248473.0,
+        "previousWeek": 2217014.0,
+        "previousWeekPeriod": "2026-10-22",
+        "previousYear": 767984.0,
+        "previousYearPeriod": "2025-10-30",
+        "fourWeekAverage": 1815819.0,
+        "WoW": 1.418980664984515,
+        "YoY": 192.77602137544534
+      }
+    },
+    "comparisonNote": "YoY uses52 weeks (364days); no MoM for weekly data. Latest official report still week endingOct29 at check."
+  },
+  "iron": {
+    "checked": "2026-11-09",
+    "cutoffTimezone": "Asia/Taipei",
+    "portHedland": {
+      "tonnes": 48904062.0,
+      "approximate": false,
+      "period": "2026-09",
+      "published": "2026-10-14",
+      "source": "https://www.pilbaraports.com.au/pilbaraportsauthority/media/documents/port%20of%20port%20hedland/about%20the%20port%20of%20port%20hedland/port%20statistics%20and%20reports/cargo%20by%20destination/cargo-stats-by-destination_origin_12.pdf",
+      "scope": "Port Hedland only; iron ore exports",
+      "previousMonth": 46604618.0,
+      "previousYear": 48567296.0,
+      "historySource": "https://www.pilbaraports.com.au/ports/port-of-port-hedland/about-port-of-hedland/port-statistics-and-reports",
+      "checked": "2026-11-09",
+      "latestAvailableStatus": "Official statistics index still lists September 2026 as latest cargo-by-destination PDF. October not linked. Current PDF fetch hit Incapsula challenge; retain previously verified September values, do not call this newly re-downloaded PDF.",
+      "indexSource": "https://www.pilbaraports.com.au/ports/port-of-port-hedland/about-port-of-hedland/port-statistics-and-reports",
+      "newObservation": false,
+      "momPct": 4.93394023742455,
+      "yoyPct": 0.693400760874141,
+      "historyRetained": true,
+      "historyChanged": false,
+      "dataRetrieved": "2026-11-07"
+    },
+    "china": {
+      "tonnes": 109817000,
+      "period": "2026-09",
+      "published": "2026-10-14",
+      "source": "https://news.metal.net.cn/content-338-8015710-1.html",
+      "sourceType": "Third-party reproduction of GACC figures",
+      "previousMonth": 108539000,
+      "previousYear": 116326000,
+      "scope": "China total iron ore and concentrates imports",
+      "checked": "2026-11-09",
+      "previousMonthSource": "https://www.mcchina.org.cn/newsinfo/11355825.html",
+      "previousMonthSourceType": "CCPIT Metallurgical Industry Council public weekly review quoting GACC; August 2026 10853.9 ten-thousand tonnes",
+      "previousYearSource": "https://news.mysteel.com/a/25101311/0ED85D437EEFA972.html",
+      "previousYearCorroboration": "https://www.gtradedata.com/news/12157.html",
+      "previousYearSourceType": "Mysteel 2025-10-13 public reproduction of GACC September 2025 advance release; corroborated by public Gtrade table; 11632.6 ten-thousand tonnes, precision 1000 tonnes",
+      "comparisonNote": "MoM/YoY calculated from individually verified published monthly values. The prior-year table is a historical vintage, not a same-query revised series; figures may be revised.",
+      "latestAvailableStatus": "September 2026 is latest obtainable as of cutoff. October advance release scheduled 2026-11-10, after cutoff.",
+      "nextScheduledRelease": "2026-11-10",
+      "releaseScheduleSource": "https://www.yntw.com/2026/03/37321.html",
+      "releaseScheduleSourceType": "Public reproduction of GACC Announcement 2025 No.240 calendar; November advance release 10th, formal tables 18th, online 20th",
+      "newObservation": false,
+      "newComparisonBases": true,
+      "momPct": 1.1774569509577226,
+      "yoyPct": -5.595481663600566,
+      "precisionTonnes": 1000,
+      "comparisonPrecisionNote": "所有三個月以0.1萬噸公布（精度1000公噸）；成長率依公布值計算，基期來自不同公布版次，可能受後續修訂影響。",
+      "rawFiles": [
+        "china-september-2026.html",
+        "china-august-2026.html",
+        "china-september-2025-mysteel.html"
+      ]
+    },
+    "brazil": {
+      "tonnes": 35518770.85,
+      "period": "2026-10",
+      "previousMonth": 32860389.83,
+      "previousYear": 39374258.508,
+      "source": "https://comexstat.mdic.gov.br/",
+      "api": "https://api-comexstat.mdic.gov.br/general?language=en",
+      "filters": {
+        "heading": "2601",
+        "via": "01",
+        "flow": "export"
+      },
+      "scope": "Brazil seaborne exports",
+      "published": "2026-11-06",
+      "retrieved": "2026-11-07",
+      "releaseSource": "https://www.gov.br/mdic/pt-br/assuntos/comercio-exterior/estatisticas/informativos/informativo-2026-050",
+      "checked": "2026-11-09",
+      "latestAvailableStatus": "Official MDIC API re-queried on 2026-11-09; latest month is 2026-10 and values match the previous November 7 query.",
+      "momPct": 8.08992538966482,
+      "yoyPct": -9.79189908355137
+    },
+    "excluded": [
+      {
+        "url": "https://www.pdc.wa.gov.au/data-and-insights.aspx",
+        "reason": "48.2 Mt October refers total port throughput rather than iron-ore LOAD total; cannot substitute."
+      },
+      {
+        "url": "https://www.mmac.org.cn/topic/481955988",
+        "reason": "2026 September detailed iron imports table requires membership; stopped at gate."
+      },
+      {
+        "url": "https://www.guosenqh.com.cn/attach/20251027/20251027083833878_682294.pdf",
+        "reason": "Search index contains Sept 2025 value but live URL 404; do not use as main visible source."
+      },
+      {
+        "url": "https://news.smm.cn/keywords/%E4%BA%A7%E9%87%8F?page=33",
+        "reason": "Its quoted September YoY -5.47% differs from calculation using published 2025 monthly value; do not mix this percent with another-vintage denominator."
+      }
+    ]
+  },
+  "steelProduction": {
+    "period": "2026-09",
+    "published": "2026-10-19",
+    "checked": "2026-11-09",
+    "unit": "ten-thousand metric tonnes",
+    "source": "https://www.stats.gov.cn/zwfwck/sjfb/202610/t20261019_1965617.html",
+    "previousMonthSource": "https://www.stats.gov.cn/zwfwck/sjfb/202609/t20260915_1965308.html",
+    "pigIron": {
+      "value": 6534,
+      "previousMonth": 6765,
+      "yoyPct": -1.4
+    },
+    "crudeSteel": {
+      "value": 7359,
+      "previousMonth": 7461,
+      "yoyPct": 0.1
+    }
+  },
+  "vale": {
+    "period": "2026-Q3",
+    "published": "2026-10-29",
+    "checked": "2026-11-09",
+    "unit": "million metric tonnes",
+    "production": 88.354,
+    "productionPreviousYear": 94.403,
+    "sales": 86.285,
+    "salesPreviousYear": 85.997,
+    "source": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005058/vale20261029_6k.htm",
+    "sourcePage": "https://www.vale.com/sv/check-out-the-financial-results-for-q3-26/-/categories/0",
+    "note": "Production includes third-party purchases; same aggregate as the existing iron ore production metric. Only operational figures are displayed."
+  },
+  "companies": {
+    "checked": "2026-11-09",
+    "unit": "vessels",
+    "bulkColumns": [
+      "VLOC",
+      "Capesize including Newcastlemax",
+      "Panamax/Kamsarmax",
+      "Supramax",
+      "Ultramax",
+      "Handysize",
+      "Small Handy",
+      "Other bulk 43000 DWT"
+    ],
+    "otherColumns": [
+      "Cement",
+      "Tanker",
+      "LNG",
+      "CSOV",
+      "CTV",
+      "Multipurpose",
+      "General cargo",
+      "Passenger/Ferry",
+      "Tug",
+      "Pilot",
+      "Unspecified other"
+    ],
+    "companies": [
+      {
+        "name": "裕民",
+        "bulk": [
+          2,
+          31,
+          24,
+          null,
+          18,
+          null,
+          null,
+          null
+        ],
+        "other": [
+          4,
+          4,
+          1,
+          2,
+          6,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "basis": "官網未標示基準日",
+        "note": "官網船型合計 92 艘，含合資及在建船；各船型的現役／在建數未拆分。海岬型 31 艘、Ultramax 18 艘。不能將全部數字視為已投入營運。",
+        "url": "https://www.uming.com.tw/fleet/Overview.aspx",
+        "label": "官方船隊概況"
+      },
+      {
+        "name": "慧洋-KY",
+        "bulk": [
+          null,
+          null,
+          35,
+          27,
+          null,
+          42,
+          22,
+          null
+        ],
+        "other": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          2
+        ],
+        "basis": "船隊逐船列表 · 最後列示更新 2026/10/05",
+        "note": "官網現有逐船列表 128 艘：自有 118、代管 10。Panamax 33＋2、Supramax 25＋2、Handy 39＋3、Small Handy 19＋3、其他自有 2；不含未列入現有船隊的新造船。來源列示最近一筆更新為 2026/10/05，不代表每艘船都在該日更新。",
+        "url": "https://www.wisdomlines.com.tw/about/current_fleet",
+        "label": "官方現有船隊逐船列表"
+      },
+      {
+        "name": "中航",
+        "bulk": [
+          null,
+          13,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "other": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "basis": "官網未標示基準日",
+        "note": "官網具名船 13 艘（含 Newcastlemax）；新增具名船「中華卓越」。另列 7 艘船號新船，未加進主表；不僅依建造年份推定已交船。",
+        "url": "https://cmt.tw/ch/fleet/?mode=list",
+        "label": "官方船隊列表"
+      },
+      {
+        "name": "新興",
+        "bulk": [
+          1,
+          7,
+          4,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "other": [
+          null,
+          3,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "basis": "官網現況 · 未標示基準日",
+        "note": "官網列示乾散貨 12 艘（Kamsarmax 4、Capesize 7、VLOC 1）、VLCC 3 艘，共 15 艘。本次以官網現況取代 2025 Q3 法說快照；購船公告不視為已交付或已列入船隊。",
+        "url": "https://www.snc.com.tw/",
+        "label": "官方船隊概況"
+      },
+      {
+        "name": "台航",
+        "bulk": [
+          null,
+          null,
+          9,
+          10,
+          null,
+          4,
+          null,
+          null
+        ],
+        "other": [
+          null,
+          3,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          9,
+          2,
+          null
+        ],
+        "basis": "官網未標示基準日",
+        "note": "官網營運船隊逐筆計數：Kamsarmax 9、Supramax 10、Handysize 4，乾散貨 23 艘。沿用官網 Supramax 分類，未另拆 Ultramax；油輪 3 艘為代營。",
+        "url": "https://www.taiwanline.com.tw/Fleet",
+        "label": "官方營運船隊"
+      },
+      {
+        "name": "四維航",
+        "bulk": [
+          null,
+          null,
+          3,
+          null,
+          5,
+          15,
+          null,
+          null
+        ],
+        "other": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null
+        ],
+        "basis": "官網未標示基準日",
+        "note": "沿用官網分類：Kamsarmax 1、Panamax 2（主表合列 3）、Ultramax 5、Handysize 15，乾散貨 23 艘。另多用途船 1、沿海客輪 1。",
+        "url": "https://www.swnav.com.tw/",
+        "label": "官方船型分類"
+      },
+      {
+        "name": "正德",
+        "bulk": [
+          null,
+          1,
+          3,
+          null,
+          2,
+          6,
+          null,
+          1
+        ],
+        "other": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          3,
+          2,
+          null,
+          null,
+          null,
+          null
+        ],
+        "basis": "官網未標示基準日",
+        "note": "官網逐船列示 18 艘：散裝 13、其他 5。依 DWT 歸類：Capesize 1、Kamsarmax 3、Ultramax 2、約 4 萬噸級 6；另 4.3 萬噸級 SINOWAY LILY 1 艘單列。未宣稱全數自有。",
+        "url": "https://www.franbo.com.tw/product_list",
+        "label": "官方船隊列表"
+      }
+    ]
+  },
+  "freight": {
+    "asOf": "2026-11-09",
+    "publisher": "Baltic Exchange",
+    "provider": "Eastmoney (public secondary data)",
+    "results": [
+      {
+        "code": "BDI",
+        "status": "downloaded",
+        "rows": 1210,
+        "first": {
+          "date": "2022-01-04",
+          "value": 2285.0
+        },
+        "last": {
+          "date": "2026-11-06",
+          "value": 2805.0
+        },
+        "newRows": 35,
+        "changedOverlap": 0,
+        "sourceUrls": [
+          "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=100.BDI&klt=101&fqt=0&beg=20220101&end=20261109&lmt=2000&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61"
+        ],
+        "excludedWeekendCarryForward": [],
+        "crossValidation": {
+          "sourceUrl": "https://www.shikyo.biz/baltic_dry_index.htm",
+          "dateRange": [
+            "2026-11-02",
+            "2026-11-06"
+          ],
+          "matched": 5
+        }
+      },
+      {
+        "code": "BCI",
+        "status": "downloaded",
+        "rows": 1189,
+        "first": {
+          "date": "2022-01-04",
+          "value": 2350
+        },
+        "last": {
+          "date": "2026-11-06",
+          "value": 4344
+        },
+        "newRows": 35,
+        "changedOverlap": 0,
+        "sourceUrls": [
+          "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_INDUSTRY_INDEX&columns=ALL&filter=%28INDICATOR_ID%3D%22EMI00107666%22%29&pageSize=500&pageNumber=1&sortColumns=REPORT_DATE&sortTypes=-1",
+          "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_INDUSTRY_INDEX&columns=ALL&filter=%28INDICATOR_ID%3D%22EMI00107666%22%29&pageSize=500&pageNumber=2&sortColumns=REPORT_DATE&sortTypes=-1",
+          "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_INDUSTRY_INDEX&columns=ALL&filter=%28INDICATOR_ID%3D%22EMI00107666%22%29&pageSize=500&pageNumber=3&sortColumns=REPORT_DATE&sortTypes=-1"
+        ],
+        "excludedWeekendCarryForward": [
+          {
+            "date": "2026-11-07",
+            "value": 4344
+          },
+          {
+            "date": "2026-11-08",
+            "value": 4344
+          }
+        ],
+        "crossValidation": {
+          "sourceUrl": "https://www.shikyo.biz/baltic_dry_index.htm",
+          "dateRange": [
+            "2026-11-02",
+            "2026-11-06"
+          ],
+          "matched": 5
+        }
+      },
+      {
+        "code": "BPI",
+        "status": "downloaded",
+        "rows": 1189,
+        "first": {
+          "date": "2022-01-04",
+          "value": 2874
+        },
+        "last": {
+          "date": "2026-11-06",
+          "value": 2003
+        },
+        "newRows": 35,
+        "changedOverlap": 0,
+        "sourceUrls": [
+          "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_INDUSTRY_INDEX&columns=ALL&filter=%28INDICATOR_ID%3D%22EMI00107665%22%29&pageSize=500&pageNumber=1&sortColumns=REPORT_DATE&sortTypes=-1",
+          "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_INDUSTRY_INDEX&columns=ALL&filter=%28INDICATOR_ID%3D%22EMI00107665%22%29&pageSize=500&pageNumber=2&sortColumns=REPORT_DATE&sortTypes=-1",
+          "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_INDUSTRY_INDEX&columns=ALL&filter=%28INDICATOR_ID%3D%22EMI00107665%22%29&pageSize=500&pageNumber=3&sortColumns=REPORT_DATE&sortTypes=-1"
+        ],
+        "excludedWeekendCarryForward": [
+          {
+            "date": "2026-11-07",
+            "value": 2003
+          },
+          {
+            "date": "2026-11-08",
+            "value": 2003
+          }
+        ],
+        "crossValidation": {
+          "sourceUrl": "https://www.shikyo.biz/baltic_dry_index.htm",
+          "dateRange": [
+            "2026-11-02",
+            "2026-11-06"
+          ],
+          "matched": 5
+        }
+      },
+      {
+        "code": "BSI",
+        "status": "downloaded",
+        "rows": 1188,
+        "first": {
+          "date": "2022-01-04",
+          "value": 2209
+        },
+        "last": {
+          "date": "2026-11-06",
+          "value": 1815
+        },
+        "newRows": 35,
+        "changedOverlap": 0,
+        "sourceUrls": [
+          "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_INDUSTRY_INDEX&columns=ALL&filter=%28INDICATOR_ID%3D%22EMI00107667%22%29&pageSize=500&pageNumber=1&sortColumns=REPORT_DATE&sortTypes=-1",
+          "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_INDUSTRY_INDEX&columns=ALL&filter=%28INDICATOR_ID%3D%22EMI00107667%22%29&pageSize=500&pageNumber=2&sortColumns=REPORT_DATE&sortTypes=-1",
+          "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_INDUSTRY_INDEX&columns=ALL&filter=%28INDICATOR_ID%3D%22EMI00107667%22%29&pageSize=500&pageNumber=3&sortColumns=REPORT_DATE&sortTypes=-1"
+        ],
+        "excludedWeekendCarryForward": [
+          {
+            "date": "2026-11-07",
+            "value": 1815
+          },
+          {
+            "date": "2026-11-08",
+            "value": 1815
+          }
+        ],
+        "crossValidation": {
+          "sourceUrl": "https://www.shikyo.biz/baltic_dry_index.htm",
+          "dateRange": [
+            "2026-11-02",
+            "2026-11-06"
+          ],
+          "matched": 5
+        }
+      }
+    ],
+    "checkedAt": "2026-11-09",
+    "latestObservation": "2026-11-06",
+    "noDistFilesModified": true,
+    "notes": [
+      "Latest 2026-11-06; no 2026-11-09 observation at source on retrieval.",
+      "Eastmoney weekend carry-forward observations 2026-11-07 and 2026-11-08 excluded for BCI/BPI/BSI.",
+      "2022–2026 historical rows available; missing dates not filled.",
+      "No BHSI added, per existing website coverage."
+    ],
+    "crossValidation": {
+      "2026-11-06": {
+        "BDI": 2805,
+        "BCI": 4344,
+        "BPI": 2003,
+        "BSI": 1815
+      },
+      "2026-11-05": {
+        "BDI": 2740,
+        "BCI": 4191,
+        "BPI": 1956,
+        "BSI": 1824
+      },
+      "2026-11-04": {
+        "BDI": 2694,
+        "BCI": 4097,
+        "BPI": 1894,
+        "BSI": 1835
+      },
+      "2026-11-03": {
+        "BDI": 2590,
+        "BCI": 3821,
+        "BPI": 1866,
+        "BSI": 1846
+      },
+      "2026-11-02": {
+        "BDI": 2648,
+        "BCI": 3963,
+        "BPI": 1874,
+        "BSI": 1856
+      }
+    }
+  },
+  "BIMCO": {
+    "latestBalanceVintage": "2026-10",
+    "recyclingVintage": "2026-01",
+    "status": "Latest available verified quantitative forecast retained per user preference; no later annual recycling forecast acquired.",
+    "source": "https://www.bimco.org/news-insights/market-analysis/shipping-market-overview-and-outlook/2026/20261029-smoo-bulk/"
+  },
+  "notDisplayed": [
+    "Legacy ABS/Comtrade sample; Port Hedland is the active Australian series.",
+    "REQ is an unimported candidate, not a chart dataset.",
+    "BHSI is not connected."
+  ]
+}

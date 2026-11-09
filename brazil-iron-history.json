@@ -87,9 +87,9 @@
   "displayEnd": "2026-10",
   "unit": "metric tonnes",
   "source": "https://api-comexstat.mdic.gov.br/general?language=en",
-  "retrieved": "2026-11-07",
+  "retrieved": "2026-11-09",
   "reconciled2025Values": 60,
-  "note": "2020–2024 and 2025 November–December retained from validated historical snapshot. 2025 and 2026 January–October re-queried from official MDIC API on 2026-11-07; current revisions replace prior values. HS 2601, via 01; metricKG / 1000. ironChina additionally filters destination country 160.",
+  "note": "MDIC API re-queried 2020-2025 full calendar years and 2026 January-October on 2026-11-09; revisions replace previous non-missing data. Previously CSV-confirmed zeros retained. Other absent API rows remain null. Sea/via01, HS4 heading, metricKG/1000.",
   "series": {
     "iron": [
       26610243.39,

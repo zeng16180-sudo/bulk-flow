@@ -4,16 +4,26 @@
   "publisher": "Baltic Exchange",
   "provider": "Eastmoney",
   "sourceUrl": "https://quote.eastmoney.com/unify/r/100.BDI",
-  "retrieved": "2026-09-20",
+  "retrieved": "2026-11-09",
   "frequency": "daily published observations",
   "validation": {
-    "recentCompared": 21,
-    "recentSource": "https://www.investing.com/indices/baltic-dry-historical-data",
-    "historicalSpotChecks": [
-      "2022-05-23: 3369",
-      "2023-12-04: 3346"
+    "note": "同一公開提供者重新下載；與既有歷史重疊值比較無差異。最新 5 個交易日與市況研究社核對一致，未逐筆與 Baltic 原始授權歷史核對。剔除東方財富週末沿用前值。",
+    "overlapChanged": [],
+    "previousLatest": {
+      "date": "2026-09-18",
+      "value": 3370.0
+    },
+    "urls": [
+      "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=100.BDI&klt=101&fqt=0&beg=20220101&end=20261109&lmt=2000&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61"
     ],
-    "note": "近期21筆及2個歷史日期交叉核對一致；未逐筆與 Baltic 原始資料核對。"
+    "excludedWeekendCarryForward": [],
+    "recentSource": "https://www.shikyo.biz/baltic_dry_index.htm",
+    "recentCompared": 5,
+    "recentDateRange": [
+      "2026-11-02",
+      "2026-11-06"
+    ],
+    "source": "https://www.shikyo.biz/baltic_dry_index.htm"
   },
   "rows": [
     {
@@ -4715,6 +4725,147 @@
     {
       "date": "2026-09-18",
       "value": 3370.0
+    },
+    {
+      "date": "2026-09-21",
+      "value": 3399.0
+    },
+    {
+      "date": "2026-09-22",
+      "value": 3432.0
+    },
+    {
+      "date": "2026-09-23",
+      "value": 3430.0
+    },
+    {
+      "date": "2026-09-24",
+      "value": 3473.0
+    },
+    {
+      "date": "2026-09-25",
+      "value": 3426.0
+    },
+    {
+      "date": "2026-09-28",
+      "value": 3268.0
+    },
+    {
+      "date": "2026-09-29",
+      "value": 3178.0
+    },
+    {
+      "date": "2026-09-30",
+      "value": 3113.0
+    },
+    {
+      "date": "2026-10-01",
+      "value": 3140.0
+    },
+    {
+      "date": "2026-10-02",
+      "value": 3148.0
+    },
+    {
+      "date": "2026-10-05",
+      "value": 3070.0
+    },
+    {
+      "date": "2026-10-06",
+      "value": 3002.0
+    },
+    {
+      "date": "2026-10-07",
+      "value": 2994.0
+    },
+    {
+      "date": "2026-10-08",
+      "value": 2973.0
+    },
+    {
+      "date": "2026-10-09",
+      "value": 2917.0
+    },
+    {
+      "date": "2026-10-12",
+      "value": 2852.0
+    },
+    {
+      "date": "2026-10-13",
+      "value": 2801.0
+    },
+    {
+      "date": "2026-10-14",
+      "value": 2667.0
+    },
+    {
+      "date": "2026-10-15",
+      "value": 2545.0
+    },
+    {
+      "date": "2026-10-16",
+      "value": 2511.0
+    },
+    {
+      "date": "2026-10-19",
+      "value": 2546.0
+    },
+    {
+      "date": "2026-10-20",
+      "value": 2593.0
+    },
+    {
+      "date": "2026-10-21",
+      "value": 2680.0
+    },
+    {
+      "date": "2026-10-22",
+      "value": 2693.0
+    },
+    {
+      "date": "2026-10-23",
+      "value": 2660.0
+    },
+    {
+      "date": "2026-10-26",
+      "value": 2628.0
+    },
+    {
+      "date": "2026-10-27",
+      "value": 2603.0
+    },
+    {
+      "date": "2026-10-28",
+      "value": 2652.0
+    },
+    {
+      "date": "2026-10-29",
+      "value": 2712.0
+    },
+    {
+      "date": "2026-10-30",
+      "value": 2714.0
+    },
+    {
+      "date": "2026-11-02",
+      "value": 2648.0
+    },
+    {
+      "date": "2026-11-03",
+      "value": 2590.0
+    },
+    {
+      "date": "2026-11-04",
+      "value": 2694.0
+    },
+    {
+      "date": "2026-11-05",
+      "value": 2740.0
+    },
+    {
+      "date": "2026-11-06",
+      "value": 2805.0
     }
-  ]
+  ],
+  "label": "乾散貨綜合指數"
 }

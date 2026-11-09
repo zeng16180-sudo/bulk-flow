@@ -4,11 +4,37 @@
   "publisher": "Baltic Exchange",
   "provider": "Eastmoney",
   "sourceUrl": "https://data.eastmoney.com/cjsj/hyzs_list_EMI00107665.html",
-  "retrieved": "2026-09-20",
+  "retrieved": "2026-11-09",
   "frequency": "daily published observations",
   "validation": {
-    "note": "最新值與匯通財經 2026/09/18 報導核對一致；未逐筆與 Baltic 原始歷史核對。",
-    "source": "https://www.fx678.com/C/20260918/202609182350408813.html",
+    "note": "同一公開提供者重新下載；與既有歷史重疊值比較無差異。最新 5 個交易日與市況研究社核對一致，未逐筆與 Baltic 原始授權歷史核對。剔除東方財富週末沿用前值。",
+    "overlapChanged": [],
+    "previousLatest": {
+      "date": "2026-09-18",
+      "value": 2251
+    },
+    "urls": [
+      "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_INDUSTRY_INDEX&columns=ALL&filter=%28INDICATOR_ID%3D%22EMI00107665%22%29&pageSize=500&pageNumber=1&sortColumns=REPORT_DATE&sortTypes=-1",
+      "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_INDUSTRY_INDEX&columns=ALL&filter=%28INDICATOR_ID%3D%22EMI00107665%22%29&pageSize=500&pageNumber=2&sortColumns=REPORT_DATE&sortTypes=-1",
+      "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_INDUSTRY_INDEX&columns=ALL&filter=%28INDICATOR_ID%3D%22EMI00107665%22%29&pageSize=500&pageNumber=3&sortColumns=REPORT_DATE&sortTypes=-1"
+    ],
+    "excludedWeekendCarryForward": [
+      {
+        "date": "2026-11-07",
+        "value": 2003
+      },
+      {
+        "date": "2026-11-08",
+        "value": 2003
+      }
+    ],
+    "recentSource": "https://www.shikyo.biz/baltic_dry_index.htm",
+    "recentCompared": 5,
+    "recentDateRange": [
+      "2026-11-02",
+      "2026-11-06"
+    ],
+    "source": "https://www.shikyo.biz/baltic_dry_index.htm",
     "missingAgainstBDI": [
       "2022-01-28",
       "2022-01-31",
@@ -4653,6 +4679,147 @@
     {
       "date": "2026-09-18",
       "value": 2251
+    },
+    {
+      "date": "2026-09-21",
+      "value": 2255
+    },
+    {
+      "date": "2026-09-22",
+      "value": 2299
+    },
+    {
+      "date": "2026-09-23",
+      "value": 2333
+    },
+    {
+      "date": "2026-09-24",
+      "value": 2382
+    },
+    {
+      "date": "2026-09-25",
+      "value": 2407
+    },
+    {
+      "date": "2026-09-28",
+      "value": 2402
+    },
+    {
+      "date": "2026-09-29",
+      "value": 2390
+    },
+    {
+      "date": "2026-09-30",
+      "value": 2384
+    },
+    {
+      "date": "2026-10-01",
+      "value": 2379
+    },
+    {
+      "date": "2026-10-02",
+      "value": 2372
+    },
+    {
+      "date": "2026-10-05",
+      "value": 2364
+    },
+    {
+      "date": "2026-10-06",
+      "value": 2366
+    },
+    {
+      "date": "2026-10-07",
+      "value": 2384
+    },
+    {
+      "date": "2026-10-08",
+      "value": 2410
+    },
+    {
+      "date": "2026-10-09",
+      "value": 2424
+    },
+    {
+      "date": "2026-10-12",
+      "value": 2432
+    },
+    {
+      "date": "2026-10-13",
+      "value": 2432
+    },
+    {
+      "date": "2026-10-14",
+      "value": 2409
+    },
+    {
+      "date": "2026-10-15",
+      "value": 2356
+    },
+    {
+      "date": "2026-10-16",
+      "value": 2314
+    },
+    {
+      "date": "2026-10-19",
+      "value": 2286
+    },
+    {
+      "date": "2026-10-20",
+      "value": 2247
+    },
+    {
+      "date": "2026-10-21",
+      "value": 2204
+    },
+    {
+      "date": "2026-10-22",
+      "value": 2151
+    },
+    {
+      "date": "2026-10-23",
+      "value": 2109
+    },
+    {
+      "date": "2026-10-26",
+      "value": 2075
+    },
+    {
+      "date": "2026-10-27",
+      "value": 2021
+    },
+    {
+      "date": "2026-10-28",
+      "value": 1965
+    },
+    {
+      "date": "2026-10-29",
+      "value": 1921
+    },
+    {
+      "date": "2026-10-30",
+      "value": 1889
+    },
+    {
+      "date": "2026-11-02",
+      "value": 1874
+    },
+    {
+      "date": "2026-11-03",
+      "value": 1866
+    },
+    {
+      "date": "2026-11-04",
+      "value": 1894
+    },
+    {
+      "date": "2026-11-05",
+      "value": 1956
+    },
+    {
+      "date": "2026-11-06",
+      "value": 2003
     }
-  ]
+  ],
+  "label": "巴拿馬型指數"
 }
