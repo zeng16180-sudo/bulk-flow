@@ -63,45 +63,31 @@
     "source": "https://agtransport.usda.gov/resource/sruw-w49i.json",
     "sourcePage": "https://agtransport.usda.gov/Exports/Grain-Inspections/sruw-w49i",
     "officialReport": "https://www.ams.usda.gov/mnreports/wa_gr101.txt",
-    "published": "2026-11-02",
-    "latestPeriod": "2026-10-29",
+    "published": null,
+    "latestPeriod": "2026-11-05",
     "scope": "date,grain,sum(mt), type_carrier_text='SHIP'; export inspections, not export sales. Not the all-carrier totals in WA_GR101.",
     "latest": {
       "wheat": {
-        "period": "2026-10-29",
-        "tonnes": 35732.0,
-        "previousWeek": 129923.0,
-        "previousWeekPeriod": "2026-10-22",
-        "previousYear": 337018.0,
-        "previousYearPeriod": "2025-10-30",
-        "fourWeekAverage": 164473.0,
-        "WoW": -72.49755624485272,
-        "YoY": -89.39759894130283
+        "tonnes": 226400.0,
+        "previousWeek": 35732.0,
+        "previousYear": 255859.0,
+        "fourWeekAverage": 156589.5
       },
       "corn": {
-        "period": "2026-10-29",
-        "tonnes": 560591.0,
-        "previousWeek": 377391.0,
-        "previousWeekPeriod": "2026-10-22",
-        "previousYear": 1334880.0,
-        "previousYearPeriod": "2025-10-30",
-        "fourWeekAverage": 616231.75,
-        "WoW": 48.5438179500836,
-        "YoY": -58.004389907707065
+        "tonnes": 535611.0,
+        "previousWeek": 560591.0,
+        "previousYear": 1170340.0,
+        "fourWeekAverage": 486198.25
       },
       "soy": {
-        "period": "2026-10-29",
-        "tonnes": 2248473.0,
-        "previousWeek": 2217014.0,
-        "previousWeekPeriod": "2026-10-22",
-        "previousYear": 767984.0,
-        "previousYearPeriod": "2025-10-30",
-        "fourWeekAverage": 1815819.0,
-        "WoW": 1.418980664984515,
-        "YoY": 192.77602137544534
+        "tonnes": 1722287.0,
+        "previousWeek": 2286148.0,
+        "previousYear": 937105.0,
+        "fourWeekAverage": 2011298.25
       }
     },
-    "comparisonNote": "YoY uses52 weeks (364days); no MoM for weekly data. Latest official report still week endingOct29 at check."
+    "comparisonNote": "WoW exactly7 days;YoY exactly364 days;full weekly history2021-present retained for2022-2026 chart and bases.",
+    "retrieved": "2026-11-10"
   },
   "iron": {
     "checked": "2026-11-09",
@@ -667,5 +653,70 @@
     "Legacy ABS/Comtrade sample; Port Hedland is the active Australian series.",
     "REQ is an unimported candidate, not a chart dataset.",
     "BHSI is not connected."
-  ]
+  ],
+  "lastSupplemented": "2026-11-10",
+  "usGrainHistory": {
+    "name": "US seaborne grain export inspections",
+    "frequency": "weekly",
+    "unit": "metric tonnes",
+    "source": "https://agtransport.usda.gov/Exports/Grain-Inspections/sruw-w49i",
+    "api": "https://agtransport.usda.gov/resource/sruw-w49i.json?%24select=date%2Cgrain%2Csum%28mt%29+as+metric_tons&%24where=date+between+%272021-01-01T00%3A00%3A00.000%27+and+%272026-11-10T23%3A59%3A59.999%27+AND+type_carrier_text%3D%27SHIP%27+AND+grain+in+%28%27WHEAT%27%2C%27CORN%27%2C%27SOYBEANS%27%29&%24group=date%2Cgrain&%24order=date%2Cgrain&%24limit=10000",
+    "retrieved": "2026-11-10",
+    "displayStart": "2022-01-01",
+    "displayEnd": "2026-11-05",
+    "years": [
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "scope": "FGIS export inspections, type_carrier_text='SHIP'; CORN / SOYBEANS / WHEAT; all destinations. Not export sales or all-carrier totals.",
+    "comparison": "WoW uses exactly 7 days earlier; YoY uses exactly 52 weeks (364 days) earlier. Missing bases are not substituted.",
+    "calendar": "Each calendar year is one line, horizontal axis Jan-Dec; weekly observations positioned by actual month/day. No monthly aggregation or interpolation."
+  },
+  "grainDemandAdded": {
+    "checkedAt": "2026-11-11",
+    "report": {
+      "reportDate": "2026-10-09",
+      "reportMonth": "2026-10",
+      "reportId": "WASDE 676",
+      "url": "https://www.usda.gov/oce/commodity/wasde/wasde1026.pdf"
+    },
+    "previous": {
+      "reportDate": "2026-09-11",
+      "reportMonth": "2026-09",
+      "provenance": "Downloaded official USDA ESMIS archive; page1 explicitly dated September 11,2026; September current forecast rows match October report September comparison rows.",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/796054/wasde0926.pdf",
+      "reportId": "WASDE 675"
+    },
+    "actualLatest": "2026-09",
+    "actualRows": 64,
+    "scope": "Grain demand modules only; pre-existing export, iron, freight and fleet data unchanged.",
+    "files": [
+      "grain-demand.json",
+      "grain-demand-data.js",
+      "grain-demand.js",
+      "grain-demand.css",
+      "grain-demand-actual.csv",
+      "grain-demand-forecast.csv"
+    ],
+    "snapshotOnly": true,
+    "checks": [
+      {
+        "url": "https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf",
+        "scheduledDate": "2026-11-10",
+        "available": false,
+        "result": "Official report index lists November release, but PDF and TXT return apology page: This file is not yet available. Latest successfully downloaded and internally dated report is October 9, 2026."
+      },
+      {
+        "url": "https://apps.fas.usda.gov/psdonline/circulars/grain.pdf",
+        "result": "Successfully downloaded; title and tables dated October 2026."
+      },
+      {
+        "url": "https://apps.fas.usda.gov/psdonline/circulars/oilseeds.pdf",
+        "result": "Successfully downloaded; title and tables dated October 2026."
+      }
+    ]
+  }
 }

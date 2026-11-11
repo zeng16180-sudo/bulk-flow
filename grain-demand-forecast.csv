@@ -1,0 +1,4 @@
+﻿commodity,report_date,season,imports_thousand_tonnes,previous_report_date,previous_vintage_imports_thousand_tonnes,previous_season_imports_thousand_tonnes,revision_thousand_tonnes,source,previous_source
+黃豆,2026-10-09,2026/27,190820,2026-09-11,190420,188530,400,https://www.usda.gov/oce/commodity/wasde/wasde1026.pdf#page=28,https://esmis.nal.usda.gov/sites/default/release-files/796054/wasde0926.pdf#page=28
+玉米,2026-10-09,2026/27,203380,2026-09-11,203110,198380,270,https://www.usda.gov/oce/commodity/wasde/wasde1026.pdf#page=23,https://esmis.nal.usda.gov/sites/default/release-files/796054/wasde0926.pdf#page=23
+小麥,2026-10-09,2026/27,204800,2026-09-11,207480,221570,-2680,https://www.usda.gov/oce/commodity/wasde/wasde1026.pdf#page=19,https://esmis.nal.usda.gov/sites/default/release-files/796054/wasde0926.pdf#page=19

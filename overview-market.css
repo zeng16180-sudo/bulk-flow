@@ -1,0 +1,38 @@
+#overview .market-heading{margin-bottom:18px}
+#overview .market-board{display:grid;gap:18px}
+#overview .market-card{padding:20px;min-width:0}
+#overview .market-card-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 16px;margin-bottom:15px}
+#overview .market-card-head .overview-heading{margin:0;gap:10px}
+#overview .market-card-head h3{margin:0;font-size:21px}
+#overview .market-links{display:flex;flex-wrap:wrap;gap:6px 12px}
+#overview .market-links button{font-size:13px;color:var(--accent);background:transparent;border:1px solid var(--line);border-radius:6px;padding:7px 10px}
+#overview .market-links button:hover{background:#e8f3f3}
+#overview .market-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#overview .market-side{min-width:0;padding:14px 16px;border-radius:7px;background:#f0f6f6;border-top:2px solid #6eaaa9}
+#overview .market-side-demand{background:#f0f3f8;border-color:#8298b7}
+#overview .market-side h4{font-size:14px;margin:0;color:#176d75}
+#overview .market-side-demand h4{color:#405d86}
+#overview .market-row{padding:9px 0;border-top:1px solid var(--line)}
+#overview .market-row:first-child{border-top:0;padding-top:9px}
+#overview .market-row:last-child{padding-bottom:0}
+#overview .market-row-top,#overview .market-row-bottom{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:3px 10px}
+#overview .market-row-top h5{margin:0;font-size:14px;font-weight:600}
+#overview .market-row-top>span,#overview .market-units{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+#overview .market-row-top>span{white-space:nowrap}
+#overview .market-row-bottom{margin-top:3px}
+#overview .market-row-bottom>strong{font-size:20px;line-height:1.35;font-variant-numeric:tabular-nums;font-weight:600}
+#overview .market-row-bottom>strong small{font-size:11px;font-weight:400;margin-left:6px;color:var(--muted)}
+#overview .market-rates{display:flex;flex-wrap:wrap;gap:5px 12px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+#overview .market-rates b{color:#182c3a;font-weight:600}
+#overview .market-units{margin:4px 0 6px}
+#overview .market-compact-list{display:flex;flex-wrap:wrap;gap:4px 7px;list-style:none;margin:0;padding:0}
+#overview .market-compact-list li{font-size:12px;padding:3px 6px;border-radius:4px;background:#fff9;line-height:1.45;white-space:nowrap}
+#overview .market-compact-list small{font-size:11px;color:var(--muted)}
+#overview .market-forecast-detail{margin-top:12px;font-size:13px;color:var(--accent)}
+#overview .market-forecast-detail summary{cursor:pointer}
+#overview .market-forecast-detail .demand-overview{margin-top:12px}
+#overview .market-footnote{margin:10px 0 0;color:var(--muted);font-size:11px;line-height:1.6}
+#overview .market-freight-split #overview-bdi{padding:0;margin:0;border:0}
+#overview .market-bimco p{font-size:13px;line-height:1.65;margin:6px 0 0}
+#overview .market-source{display:inline-block;font-size:11px;margin-top:6px}
+@media(max-width:600px){#overview .market-split{grid-template-columns:minmax(0,1fr)}#overview .market-card{padding:14px}#overview .market-side{padding:12px}}
