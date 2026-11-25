@@ -9,7 +9,7 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 from zoneinfo import ZoneInfo
 
-from common import ROOT, ReviewRequired, dump, load
+from common import ROOT, ReviewRequired, dump, is_temporary_error, load
 from export_site import artifacts, verify
 from fleets import update_company
 from iron import update_hedland, update_imports, update_steel, update_vale
@@ -64,7 +64,8 @@ def evaluate(state, job, today):
     except Exception as error:
         result = 'review' if isinstance(error, ReviewRequired) else 'error'
         message = f'{type(error).__name__}: {error}'.replace('\n', ' ').replace('\r', ' ')[:360]
-        return None, {'result': result, 'message': message}
+        return None, {'result': result, 'message': message,
+                      'temporary': result == 'error' and is_temporary_error(error)}
 
 
 def merge(target, before, after):
@@ -190,6 +191,14 @@ def describe_statuses(original, state, statuses):
                              + (f" · 交付量化版次 {delivery_vintage}" if delivery_vintage else ''))
 
 
+def record_temporary_failures(statuses, previous, day):
+    old_sources = previous.get('sources', {})
+    for name, row in statuses.items():
+        if row.get('temporary'):
+            old_days = old_sources.get(name, {}).get('temporaryFailureDays', 0)
+            row['temporaryFailureDays'] = max(1, old_days + (previous.get('checked') != day))
+
+
 def report_status(statuses, checked_at):
     def cell(value):
         return str(value).replace('|', '/').replace('\n', ' ')
@@ -197,6 +206,8 @@ def report_status(statuses, checked_at):
     rows = []
     for name, row in statuses.items():
         message = row.get('message', '')
+        result = row['result']
+        failure_days = row.get('temporaryFailureDays', 0)
         count = row.get('vesselCount')
         undated = '官網未標日期' if count is not None else '—'
         previous = row['previousPeriod'] or undated
@@ -208,9 +219,12 @@ def report_status(statuses, checked_at):
             old_count = row['previousVesselCount']
             vessels = f'{count} 艘' if old_count == count else f'{old_count} → {count} 艘'
         detail = ' · '.join(x for x in (row.get('detail'), message) if x) or '—'
-        rows.append('| ' + ' | '.join(map(cell, (name, row['result'], previous,
+        if failure_days:
+            result = '暫時故障' if failure_days < 3 else '暫時故障 · 請留意'
+            detail += f' · 連續 {failure_days} 個查核日未恢復，下次排程自動再查'
+        rows.append('| ' + ' | '.join(map(cell, (name, result, previous,
                                                  verified, vessels, detail))) + ' |\n')
-        if message and os.getenv('GITHUB_ACTIONS') == 'true':
+        if message and (not failure_days or failure_days >= 3) and os.getenv('GITHUB_ACTIONS') == 'true':
             print(f"::warning title=Data source {name}::{message.replace('%', '%25')}")
     summary = os.getenv('GITHUB_STEP_SUMMARY')
     if summary:
@@ -219,7 +233,8 @@ def report_status(statuses, checked_at):
             out.write(f"**查核完成（台灣時間）**　{checked_at.replace('T', ' ')}\n\n")
             out.write('`updated` 已抓取且採用數值或來源資訊有變動（也可能是歷史修訂）。'
                       '`unchanged` 已抓取，來源回傳的可核驗資料與原資料一致。'
-                      '`error` 抓取或驗證失敗。`review` 需要人工核對。\n\n')
+                      '`暫時故障` 由排程自動再查。`error` 抓取或驗證失敗，需查看原因。'
+                      '`review` 需要人工核對。\n\n')
             out.write('本次核驗期別以目前可讀的來源為準。網站何時採用本次結果，可查看 **deploy** 工作。\n\n')
             out.write('| 來源 | 結果 | 更新前採用期別 | 本次核驗期別 | 船隊艘數 | 說明 |\n'
                       '|---|---|---|---|---:|---|\n')
@@ -243,7 +258,9 @@ def main():
     synchronize_metadata(state, original, today)
     describe_statuses(original, state, statuses)
     checked_at = datetime.now(timezone).isoformat(timespec='seconds')
-    files = render(options.site, state, {'checked': checked_at[:10], 'checkedAt': checked_at, 'sources': statuses})
+    checked_day = checked_at[:10]
+    record_temporary_failures(statuses, load(options.site / 'update-status.json'), checked_day)
+    files = render(options.site, state, {'checked': checked_day, 'checkedAt': checked_at, 'sources': statuses})
     if not options.check_only:
         write_changed(options.site, files)
     report_status(statuses, checked_at)

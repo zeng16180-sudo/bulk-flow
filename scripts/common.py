@@ -1,12 +1,15 @@
 import csv
+import errno
 import io
 import json
 import math
 import re
+import socket
 import ssl
 import time
-from datetime import date, timedelta
-from http.client import RemoteDisconnected
+from datetime import date, timedelta, timezone
+from email.utils import parsedate_to_datetime
+from http.client import IncompleteRead
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode
@@ -15,6 +18,13 @@ from urllib.request import Request, urlopen
 from lxml import html
 
 ROOT = Path(__file__).resolve().parents[1]
+RETRY_DELAYS = (2, 8, 20)
+MAX_RETRY_WAIT = 30
+RETRY_HTTP_CODES = {408, 429, 500, 502, 503, 504}
+RETRY_CONNECTION_ERRORS = {
+    errno.ECONNABORTED, errno.ECONNREFUSED, errno.ECONNRESET, errno.EHOSTUNREACH,
+    errno.ENETUNREACH, errno.ETIMEDOUT, socket.EAI_AGAIN,
+}
 
 
 class ReviewRequired(ValueError):
@@ -24,6 +34,32 @@ class ReviewRequired(ValueError):
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def is_temporary_error(error):
+    if isinstance(error, HTTPError):
+        return error.code in RETRY_HTTP_CODES
+    if isinstance(error, URLError):
+        error = error.reason
+    return isinstance(error, (TimeoutError, ConnectionError, IncompleteRead)) or (
+        isinstance(error, OSError) and error.errno in RETRY_CONNECTION_ERRORS)
+
+
+def retry_delay(error, default):
+    after = error.headers.get('Retry-After') if isinstance(error, HTTPError) and error.headers else None
+    if not after:
+        return default
+    try:
+        if after.strip().isdigit():
+            server_wait = int(after)
+        else:
+            retry_at = parsedate_to_datetime(after)
+            if retry_at.tzinfo is None:
+                retry_at = retry_at.replace(tzinfo=timezone.utc)
+            server_wait = retry_at.timestamp() - time.time()
+        return max(default, server_wait)
+    except (TypeError, ValueError, OverflowError, OSError):
+        return default
 
 
 def fetch(url, *, query=None, post=None, referer=None, tls_context=None):
@@ -39,19 +75,21 @@ def fetch(url, *, query=None, post=None, referer=None, tls_context=None):
     request = Request(url, data=json.dumps(post).encode() if post is not None else None,
                       headers=headers)
     context = tls_context if tls_context is not None else ssl.create_default_context()
-    for attempt in range(2):
+    for attempt in range(len(RETRY_DELAYS) + 1):
         try:
             with urlopen(request, timeout=18, context=context) as response:
                 body = response.read(30_000_001)
                 require(0 < len(body) <= 30_000_000, 'Empty or oversized source response')
                 return body
-        except HTTPError as error:
-            if attempt or error.code not in (408, 429, 500, 502, 503, 504):
+        except (OSError, IncompleteRead) as error:
+            if attempt == len(RETRY_DELAYS) or not is_temporary_error(error):
                 raise
-        except (URLError, TimeoutError, RemoteDisconnected):
-            if attempt:
+            delay = retry_delay(error, RETRY_DELAYS[attempt])
+            if delay > MAX_RETRY_WAIT:
                 raise
-        time.sleep(2)
+            if isinstance(error, HTTPError):
+                error.close()
+            time.sleep(delay)
 
 
 def api(url, **options):
