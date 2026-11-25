@@ -1,0 +1,74 @@
+name: Bulk Flow Daily Update
+on:
+  schedule:
+    - cron: '17 8 * * *'
+      timezone: Asia/Taipei
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the verified update to GitHub Pages
+        type: boolean
+        required: true
+        default: false
+concurrency:
+  group: bulk-flow-pages
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  refresh:
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pages: read
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install parsing dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Verify existing website snapshot
+        run: python scripts/update_data.py --verify-only
+      - name: Retrieve and verify public data
+        run: python scripts/update_data.py
+      - name: Verify generated data and scripts
+        run: |
+          python scripts/update_data.py --verify-only
+          for file in site/*.js; do node --check "$file"; done
+      - name: Configure GitHub Pages
+        if: github.event_name == 'schedule' || inputs.publish == true
+        uses: actions/configure-pages@v5
+      - name: Persist verified data
+        if: github.event_name == 'schedule' || inputs.publish == true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- site
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh bulk shipping data"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - name: Package site for Pages
+        if: github.event_name == 'schedule' || inputs.publish == true
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+  deploy:
+    if: github.event_name == 'schedule' || inputs.publish == true
+    needs: refresh
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
