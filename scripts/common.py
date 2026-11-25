@@ -26,7 +26,7 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def fetch(url, *, query=None, post=None, referer=None):
+def fetch(url, *, query=None, post=None, referer=None, tls_context=None):
     if query:
         url += ('&' if '?' in url else '?') + urlencode(query)
     url = quote(url, safe=":/?&=%#@+;,")
@@ -38,9 +38,10 @@ def fetch(url, *, query=None, post=None, referer=None):
         headers['Content-Type'] = 'application/json'
     request = Request(url, data=json.dumps(post).encode() if post is not None else None,
                       headers=headers)
+    context = tls_context if tls_context is not None else ssl.create_default_context()
     for attempt in range(2):
         try:
-            with urlopen(request, timeout=18, context=ssl.create_default_context()) as response:
+            with urlopen(request, timeout=18, context=context) as response:
                 body = response.read(30_000_001)
                 require(0 < len(body) <= 30_000_000, 'Empty or oversized source response')
                 return body

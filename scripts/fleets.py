@@ -1,10 +1,15 @@
 import json
 import re
+import ssl
 from collections import Counter
+from pathlib import Path
+from urllib.error import URLError
 
 from common import document, fetch, node_text, number, require
 
 SNC = 'https://www.snc.com.tw/船隊明細/'
+WISDOM_FLEET = 'https://www.wisdomlines.com.tw/about/current_fleet'
+WISDOM_ISSUER = Path(__file__).with_name('certs') / 'certum-dv-tls-g2-r39.pem'
 BULK = ('vloc', 'cape', 'panamax', 'supra', 'ultra', 'handy', 'small', 'otherBulk')
 OTHER = ('cement', 'tanker', 'lng', 'csov', 'ctv', 'multi', 'cargo',
          'passenger', 'tug', 'pilot', 'other')
@@ -40,6 +45,21 @@ def uming(raw):
                            lambda item: item.get('data-id'),
                            lambda item: int(re.search(r'\d+', node_text(item.xpath('.//h5')[0]))[0]))
     return counts, f'官網各船型合計 {sum(counts.values())} 艘，口徑含合資及在建船。' + summary(counts), None, None
+
+
+def fetch_wisdom():
+    try:
+        return fetch(WISDOM_FLEET)
+    except URLError as error:
+        reason = error.reason
+        if not isinstance(reason, ssl.SSLCertVerificationError) or reason.verify_code not in (20, 21):
+            raise
+    # Certum's public issuer certificate fills the missing chain link from Wisdom's server.
+    # Require the complete chain to reach a system trust root and retain hostname validation.
+    context = ssl.create_default_context()
+    context.verify_flags &= ~ssl.VERIFY_X509_PARTIAL_CHAIN
+    context.load_verify_locations(cafile=str(WISDOM_ISSUER))
+    return fetch(WISDOM_FLEET, tls_context=context)
 
 
 def wisdom(raw):
@@ -200,7 +220,8 @@ PARSERS = {'裕民': uming, '慧洋-KY': wisdom, '中航': cmt, '新興': sincer
 def update_company(item, today):
     url = SNC if item['name'] == '新興' else item['url']
     try:
-        counts, note, basis, source_date = PARSERS[item['name']](fetch(url))
+        raw = fetch_wisdom() if item['name'] == '慧洋-KY' else fetch(url)
+        counts, note, basis, source_date = PARSERS[item['name']](raw)
     except Exception:
         if item['name'] != '新興':
             raise
