@@ -4,12 +4,12 @@
   "publisher": "Baltic Exchange",
   "provider": "Eastmoney",
   "sourceUrl": "https://data.eastmoney.com/cjsj/hyzs_list_EMI00107666.html",
-  "retrieved": "2026-11-25",
+  "retrieved": "2026-11-26",
   "frequency": "daily published observations",
   "validation": {
     "note": "東方財富公開轉載。同一來源合併，排除週末，未補缺值。",
     "overlapChanged": [],
-    "previousLatest": "2026-11-06",
+    "previousLatest": "2026-11-25",
     "missingAgainstBDI": [
       "2022-01-28",
       "2022-01-31",
@@ -4845,6 +4845,10 @@
     },
     {
       "date": "2026-11-25",
+      "value": 5014.0
+    },
+    {
+      "date": "2026-11-26",
       "value": 5014.0
     }
   ],
