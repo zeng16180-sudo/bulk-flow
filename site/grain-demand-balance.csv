@@ -1,0 +1,13 @@
+commodity,report_date,geography,season,status,imports_thousand_tonnes,consumption_thousand_tonnes,ending_stocks_thousand_tonnes,stocks_use_pct,crush_thousand_tonnes,source
+soy,2026-11-10,World,2024/25,historical,179150,412130,126010,30.575303908960766,359230,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=28
+soy,2026-11-10,World,2025/26,estimate,189390,433050,124980,28.860408728784204,376330,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=28
+soy,2026-11-10,World,2026/27,forecast,191380,442800,123500,27.890695573622402,386240,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=28
+soy,2026-11-10,China,2024/25,historical,108000,127400,44490,34.92150706436421,103500,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=28
+soy,2026-11-10,China,2025/26,estimate,113000,133900,44360,33.129200896191186,109000,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=28
+soy,2026-11-10,China,2026/27,forecast,115000,136000,44260,32.544117647058826,111000,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=28
+corn,2026-11-10,World,2024/25,historical,186560,1253190,295690,23.594985596757077,,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=23
+corn,2026-11-10,World,2025/26,estimate,199610,1322100,308310,23.319718629453142,,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=23
+corn,2026-11-10,World,2026/27,forecast,201430,1317920,281940,21.39280077698191,,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=23
+wheat,2026-11-10,World,2024/25,historical,201490,808470,260420,32.21146115502121,,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=19
+wheat,2026-11-10,World,2025/26,estimate,222370,821590,282860,34.42836451271315,,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=19
+wheat,2026-11-10,World,2026/27,forecast,203850,829550,280820,33.85208848170695,,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=19

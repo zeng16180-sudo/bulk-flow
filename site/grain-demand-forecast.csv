@@ -1,0 +1,4 @@
+commodity,report_date,season,imports_thousand_tonnes,previous_report_date,previous_vintage_imports_thousand_tonnes,previous_season_imports_thousand_tonnes,revision_thousand_tonnes,source,previous_source
+soy,2026-11-10,2026/27,191380,2026-10-09,190820,189390,560,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=28,https://www.usda.gov/oce/commodity/wasde/wasde1026.pdf
+corn,2026-11-10,2026/27,201430,2026-10-09,203380,199610,-1950,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=23,https://www.usda.gov/oce/commodity/wasde/wasde1026.pdf
+wheat,2026-11-10,2026/27,203850,2026-10-09,204800,222370,-950,https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf#page=19,https://www.usda.gov/oce/commodity/wasde/wasde1026.pdf

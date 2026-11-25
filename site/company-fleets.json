@@ -1,0 +1,246 @@
+{
+  "checked": "2026-11-25",
+  "unit": "vessels",
+  "bulkColumns": [
+    "VLOC",
+    "Capesize including Newcastlemax",
+    "Panamax/Kamsarmax",
+    "Supramax",
+    "Ultramax",
+    "Handysize",
+    "Small Handy",
+    "Other bulk 43000 DWT"
+  ],
+  "otherColumns": [
+    "Cement",
+    "Tanker",
+    "LNG",
+    "CSOV",
+    "CTV",
+    "Multipurpose",
+    "General cargo",
+    "Passenger/Ferry",
+    "Tug",
+    "Pilot",
+    "Unspecified other"
+  ],
+  "companies": [
+    {
+      "name": "裕民",
+      "bulk": [
+        2,
+        31,
+        24,
+        null,
+        18,
+        null,
+        null,
+        null
+      ],
+      "other": [
+        4,
+        4,
+        1,
+        2,
+        6,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "basis": "官網未標示全船隊基準日",
+      "note": "官網各船型合計 92 艘，口徑含合資及在建船。VLOC 2、油輪 4、Capesize 31、Panamax／Kamsarmax 24、Ultramax 18、水泥船 4、LNG 1、CSOV 2、CTV 6 艘。",
+      "url": "https://www.uming.com.tw/fleet/Overview.aspx",
+      "label": "官方船隊概況",
+      "sourceDate": null
+    },
+    {
+      "name": "慧洋-KY",
+      "bulk": [
+        null,
+        null,
+        35,
+        27,
+        null,
+        42,
+        22,
+        null
+      ],
+      "other": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        2
+      ],
+      "basis": "最近一筆逐船紀錄 2026/10/05",
+      "note": "官網逐船共 128 艘，自有 118、代管 10。紀錄日期為個別船舶維護日期。Supramax 27、Small Handy 22、Handysize 42、Panamax／Kamsarmax 35、其他 2 艘。",
+      "url": "https://www.wisdomlines.com.tw/about/current_fleet",
+      "label": "官方現有船隊逐船列表",
+      "sourceDate": "2026-10-05"
+    },
+    {
+      "name": "中航",
+      "bulk": [
+        null,
+        13,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "basis": "官網未標示全船隊基準日",
+      "note": "官網具名船 13 艘。另列 7 艘船號新船，主表只計具名船。",
+      "url": "https://cmt.tw/ch/fleet/?mode=list",
+      "label": "官方船隊列表",
+      "sourceDate": null
+    },
+    {
+      "name": "新興",
+      "bulk": [
+        1,
+        7,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": [
+        null,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "basis": "官網未標示全船隊基準日",
+      "note": "官網列示 15 艘。Panamax／Kamsarmax 4、Capesize 7、VLOC 1、油輪 3 艘。",
+      "url": "https://www.snc.com.tw/新興船隊/",
+      "label": "官方船隊概況",
+      "sourceDate": null
+    },
+    {
+      "name": "台航",
+      "bulk": [
+        null,
+        null,
+        9,
+        10,
+        null,
+        4,
+        null,
+        null
+      ],
+      "other": [
+        null,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        9,
+        2,
+        null
+      ],
+      "basis": "官網未標示全船隊基準日",
+      "note": "Panamax／Kamsarmax 9、Supramax 10、Handysize 4、客輪 1、油輪 3、拖船 9、引水船 2 艘。其中油輪 3 艘代營，船型採官網分類。",
+      "url": "https://www.taiwanline.com.tw/Fleet",
+      "label": "官方營運船隊",
+      "sourceDate": null
+    },
+    {
+      "name": "四維航",
+      "bulk": [
+        null,
+        null,
+        3,
+        null,
+        5,
+        15,
+        null,
+        null
+      ],
+      "other": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "basis": "官網未標示全船隊基準日",
+      "note": "依官網船型，Panamax 與 Kamsarmax 合列。Panamax／Kamsarmax 3、Ultramax 5、Handysize 15、多用途船 1、客輪 1 艘。",
+      "url": "https://www.swnav.com.tw/",
+      "label": "官方船型分類",
+      "sourceDate": null
+    },
+    {
+      "name": "正德",
+      "bulk": [
+        null,
+        null,
+        3,
+        null,
+        2,
+        6,
+        null,
+        1
+      ],
+      "other": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null
+      ],
+      "basis": "官網未標示全船隊基準日",
+      "note": "官網逐船共 17 艘。散裝船依 DWT 區間歸類。Ultramax 2、Panamax／Kamsarmax 3、Handysize 6、多用途船 3、雜貨船 2、其他散裝 1 艘。",
+      "url": "https://www.franbo.com.tw/product_list",
+      "label": "官方船隊列表",
+      "sourceDate": null
+    }
+  ]
+}
