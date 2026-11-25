@@ -137,18 +137,92 @@ def write_changed(directory, files):
             Path(staged.name).unlink(missing_ok=True)
 
 
-def report_status(statuses):
+def source_periods(state):
+    dashboard = state['dashboard']
+    iron = dashboard['ironFlowSnapshot']
+    soy = state['grain']['actual']['rows'][-1]
+    return {
+        **{code: series['rows'][-1]['date'] for code, series in state['freight'].items()},
+        'us': dashboard['usPeriod'],
+        'brazil': dashboard['brazilPeriod'],
+        'china': f"黃豆 {soy['period']} · 鐵礦砂 {iron['china']['period']}",
+        'steel': dashboard['steelProduction']['period'],
+        'hedland': state['hedland']['displayEnd'],
+        'vale': dashboard['vale']['period'],
+        'wasde': state['grain']['forecast']['reportDate'],
+        'bimco': state['bimco']['bimcoLatest']['published'],
+        **{c['name']: c.get('sourceDate') for c in state['companies']['companies']},
+    }
+
+
+def describe_statuses(original, state, statuses):
+    previous_periods, periods = source_periods(original), source_periods(state)
+    companies = {c['name']: c for c in state['companies']['companies']}
+    old_companies = {c['name']: c for c in original['companies']['companies']}
+    latest_soy = state['grain']['actual']['rows'][-1]
+    latest_iron = state['dashboard']['ironFlowSnapshot']['china']
+    outlook = state['bimco']
+    delivery_vintage = outlook['bimcoLatest'].get('deliveryEvidence', {}).get('reportVintage')
+    for name, row in statuses.items():
+        row['previousPeriod'] = previous_periods[name]
+        row['period'] = periods[name]
+        succeeded = row['result'] in ('updated', 'unchanged')
+        row['verifiedPeriod'] = periods[name] if succeeded else None
+        if name in companies:
+            before, company = old_companies[name], companies[name]
+            row['vesselCount'] = sum(n or 0 for n in company['bulk'] + company['other'])
+            row['previousVesselCount'] = sum(n or 0 for n in before['bulk'] + before['other'])
+            row['detail'] = ('日期為最近一筆逐船紀錄的維護日' if periods[name]
+                             else '官網未標示全船隊基準日，按可讀名冊或分類合計比對')
+        elif name == 'china':
+            row['detail'] = (f"黃豆：{latest_soy['sourceName']} · "
+                             f"鐵礦砂：{latest_iron.get('sourceType', '海關資料')}")
+            official_soy = [r['period'] for r in state['grain']['actual']['rows']
+                            if 'fdi.mofcom.gov.cn' in r['source']]
+            official_iron = [r['period'] for r in state['china'].values()
+                             if 'fdi.mofcom.gov.cn' in r['source']]
+            if official_soy and official_iron:
+                common_period = min(max(official_soy), max(official_iron))
+                if common_period < min(latest_soy['period'], latest_iron['period']):
+                    row['detail'] += f' · 商務部轉載兩項皆有資料至 {common_period}'
+        elif name == 'bimco':
+            row['detail'] = (f"拆船量化版次 {outlook['bimcoRecycling']['reportVintage']}"
+                             + (f" · 交付量化版次 {delivery_vintage}" if delivery_vintage else ''))
+
+
+def report_status(statuses, checked_at):
+    def cell(value):
+        return str(value).replace('|', '/').replace('\n', ' ')
+
     rows = []
     for name, row in statuses.items():
         message = row.get('message', '')
-        point = ' · '.join(x for x in (str(row.get('period', '')), message) if x)
-        rows.append(f"| {name} | {row['result']} | {point.replace('|', '/')} |\n")
+        count = row.get('vesselCount')
+        undated = '官網未標日期' if count is not None else '—'
+        previous = row['previousPeriod'] or undated
+        verified = row['verifiedPeriod'] or undated
+        if row['result'] in ('error', 'review'):
+            verified = '未核驗 · 保留原值'
+        vessels = '—'
+        if count is not None:
+            old_count = row['previousVesselCount']
+            vessels = f'{count} 艘' if old_count == count else f'{old_count} → {count} 艘'
+        detail = ' · '.join(x for x in (row.get('detail'), message) if x) or '—'
+        rows.append('| ' + ' | '.join(map(cell, (name, row['result'], previous,
+                                                 verified, vessels, detail))) + ' |\n')
         if message and os.getenv('GITHUB_ACTIONS') == 'true':
             print(f"::warning title=Data source {name}::{message.replace('%', '%25')}")
     summary = os.getenv('GITHUB_STEP_SUMMARY')
     if summary:
         with Path(summary).open('a', encoding='utf-8') as out:
-            out.write('## Daily source checks\n\n| Source | Result | Period or issue |\n|---|---|---|\n')
+            out.write('## Daily source checks\n\n')
+            out.write(f"**查核完成（台灣時間）**　{checked_at.replace('T', ' ')}\n\n")
+            out.write('`updated` 已抓取且採用數值或來源資訊有變動（也可能是歷史修訂）。'
+                      '`unchanged` 已抓取，來源回傳的可核驗資料與原資料一致。'
+                      '`error` 抓取或驗證失敗。`review` 需要人工核對。\n\n')
+            out.write('本次核驗期別以目前可讀的來源為準。網站何時採用本次結果，可查看 **deploy** 工作。\n\n')
+            out.write('| 來源 | 結果 | 更新前採用期別 | 本次核驗期別 | 船隊艘數 | 說明 |\n'
+                      '|---|---|---|---|---:|---|\n')
             out.writelines(rows)
 
 
@@ -158,7 +232,8 @@ def main():
     parser.add_argument('--verify-only', action='store_true', help='Verify the current snapshot without the network')
     parser.add_argument('--check-only', action='store_true', help='Fetch and validate, without writing')
     options = parser.parse_args()
-    today = datetime.now(ZoneInfo('Asia/Taipei')).date().isoformat()
+    timezone = ZoneInfo('Asia/Taipei')
+    today = datetime.now(timezone).date().isoformat()
     original = read_state(options.site)
     if options.verify_only:
         verify(original, artifacts(original), options.site, persisted=True)
@@ -166,14 +241,12 @@ def main():
         return
     state, statuses = run_checks(original, today)
     synchronize_metadata(state, original, today)
-    previous = load(options.site / 'update-status.json')
-    for name, row in statuses.items():
-        if 'period' not in row and previous.get('sources', {}).get(name, {}).get('period'):
-            row['period'] = previous['sources'][name]['period']
-    files = render(options.site, state, {'checked': today, 'sources': statuses})
+    describe_statuses(original, state, statuses)
+    checked_at = datetime.now(timezone).isoformat(timespec='seconds')
+    files = render(options.site, state, {'checked': checked_at[:10], 'checkedAt': checked_at, 'sources': statuses})
     if not options.check_only:
         write_changed(options.site, files)
-    report_status(statuses)
+    report_status(statuses, checked_at)
     print('Validated all generated website artifacts.')
 
 
