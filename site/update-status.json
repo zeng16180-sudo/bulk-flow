@@ -1,29 +1,29 @@
 {
   "checked": "2026-11-26",
-  "checkedAt": "2026-11-26T07:53:56+08:00",
+  "checkedAt": "2026-11-26T09:23:41+08:00",
   "sources": {
     "BDI": {
-      "result": "updated",
+      "result": "unchanged",
       "period": "2026-11-26",
-      "previousPeriod": "2026-11-25",
+      "previousPeriod": "2026-11-26",
       "verifiedPeriod": "2026-11-26"
     },
     "BCI": {
-      "result": "updated",
+      "result": "unchanged",
       "period": "2026-11-26",
-      "previousPeriod": "2026-11-25",
+      "previousPeriod": "2026-11-26",
       "verifiedPeriod": "2026-11-26"
     },
     "BPI": {
-      "result": "updated",
+      "result": "unchanged",
       "period": "2026-11-26",
-      "previousPeriod": "2026-11-25",
+      "previousPeriod": "2026-11-26",
       "verifiedPeriod": "2026-11-26"
     },
     "BSI": {
-      "result": "updated",
+      "result": "unchanged",
       "period": "2026-11-26",
-      "previousPeriod": "2026-11-25",
+      "previousPeriod": "2026-11-26",
       "verifiedPeriod": "2026-11-26"
     },
     "us": {
