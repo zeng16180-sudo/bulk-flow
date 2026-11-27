@@ -1,30 +1,30 @@
 {
-  "checked": "2026-11-26",
-  "checkedAt": "2026-11-26T16:13:25+08:00",
+  "checked": "2026-11-27",
+  "checkedAt": "2026-11-27T09:53:23+08:00",
   "sources": {
     "BDI": {
-      "result": "unchanged",
-      "period": "2026-11-26",
+      "result": "updated",
+      "period": "2026-11-27",
       "previousPeriod": "2026-11-26",
-      "verifiedPeriod": "2026-11-26"
+      "verifiedPeriod": "2026-11-27"
     },
     "BCI": {
-      "result": "unchanged",
-      "period": "2026-11-26",
+      "result": "updated",
+      "period": "2026-11-27",
       "previousPeriod": "2026-11-26",
-      "verifiedPeriod": "2026-11-26"
+      "verifiedPeriod": "2026-11-27"
     },
     "BPI": {
-      "result": "unchanged",
-      "period": "2026-11-26",
+      "result": "updated",
+      "period": "2026-11-27",
       "previousPeriod": "2026-11-26",
-      "verifiedPeriod": "2026-11-26"
+      "verifiedPeriod": "2026-11-27"
     },
     "BSI": {
-      "result": "unchanged",
-      "period": "2026-11-26",
+      "result": "updated",
+      "period": "2026-11-27",
       "previousPeriod": "2026-11-26",
-      "verifiedPeriod": "2026-11-26"
+      "verifiedPeriod": "2026-11-27"
     },
     "us": {
       "result": "unchanged",
@@ -33,13 +33,10 @@
       "verifiedPeriod": "2026-11-19"
     },
     "brazil": {
-      "result": "error",
-      "message": "HTTPError: HTTP Error 503: Service Unavailable",
-      "temporary": true,
-      "previousPeriod": "2026-10",
+      "result": "unchanged",
       "period": "2026-10",
-      "verifiedPeriod": null,
-      "temporaryFailureDays": 1
+      "previousPeriod": "2026-10",
+      "verifiedPeriod": "2026-10"
     },
     "china": {
       "result": "unchanged",
@@ -107,9 +104,11 @@
       "detail": "官網未標示全船隊基準日，按可讀名冊或分類合計比對"
     },
     "新興": {
-      "result": "unchanged",
-      "period": null,
+      "result": "error",
+      "message": "ValueError: Sincere type rows and summary unavailable",
+      "temporary": false,
       "previousPeriod": null,
+      "period": null,
       "verifiedPeriod": null,
       "vesselCount": 15,
       "previousVesselCount": 15,
@@ -134,9 +133,11 @@
       "detail": "官網未標示全船隊基準日，按可讀名冊或分類合計比對"
     },
     "正德": {
-      "result": "unchanged",
-      "period": null,
+      "result": "error",
+      "message": "ValueError: Franbo roster does not match official vessel count",
+      "temporary": false,
       "previousPeriod": null,
+      "period": null,
       "verifiedPeriod": null,
       "vesselCount": 17,
       "previousVesselCount": 17,
