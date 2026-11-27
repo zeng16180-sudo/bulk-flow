@@ -63,4 +63,4 @@ period,tonnes,sourceName,sourceGroup,method,derived,precisionNote,cumulativeTonn
 2026-07,11477000.0,中國海關／商務部官方轉載,china-official-tables,reported_monthly_quantity,,依官方量值表原有精度,61511000.0,61054000.0,2026-08-18,官方轉載日期,https://fdi.mofcom.gov.cn/come-datatongji-con.html?id=16953
 2026-08,12141000.0,中國海關／商務部官方轉載,china-official-tables,reported_monthly_quantity,,依官方量值表原有精度,74107000.0,73332000.0,2026-10-13,官方轉載日期,https://fdi.mofcom.gov.cn/come-datatongji-con.html?id=16999
 2026-09,11880000.0,中國海關／商務部官方轉載,china-official-tables,reported_monthly_quantity,,依官方量值表原有精度,86083000.0,86200000.0,2026-11-06,官方轉載日期,https://fdi.mofcom.gov.cn/come-datatongji-con.html?id=17037
-2026-10,7345000.0,中國海關快訊／鋼之家轉載,china-official-tables,gacc_preliminary_monthly_quantity_reprint,,海關快訊轉載，待官方月報覆核,93479000.0,95682000.0,2026-11-10,第三方轉載日期,https://www.steelhome.com/detailspage.php?nid=4791027&ntype=n
+2026-10,7345000.0,中國海關／商務部官方轉載,china-official-tables,reported_monthly_quantity,,依官方量值表原有精度,93479000.0,95682000.0,2026-11-27,官方轉載日期,https://fdi.mofcom.gov.cn/come-datatongji-con.html?id=17081

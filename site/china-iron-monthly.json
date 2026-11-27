@@ -241,18 +241,18 @@
   "2026-10": {
     "period": "2026-10",
     "tonnes": 105658000.0,
-    "source": "https://www.steelhome.com/detailspage.php?nid=4791027&ntype=n",
-    "sourceName": "中國海關快訊／鋼之家轉載",
+    "source": "https://fdi.mofcom.gov.cn/come-datatongji-con.html?id=17081",
+    "sourceName": "中國海關／商務部官方轉載",
     "sourceGroup": "china-official-tables",
-    "published": "2026-11-10",
-    "publishedType": "第三方轉載日期",
-    "retrieved": "2026-11-25",
-    "method": "gacc_preliminary_monthly_quantity_reprint",
+    "published": "2026-11-27",
+    "publishedType": "官方轉載日期",
+    "retrieved": "2026-11-27",
+    "method": "reported_monthly_quantity",
     "originalUnit": "萬噸",
-    "precisionNote": "海關快訊轉載，待官方月報覆核",
+    "precisionNote": "依官方量值表原有精度",
     "cumulativeTonnes": 1060554000.0,
     "lastYearCumulativeTonnes": 1028173000.0,
     "reportedCumulativeYoY": 3.1,
-    "title": "2026年10月全国进口重点商品量值表-钢之家钢铁网"
+    "title": "2026年10月全国进口重点商品量值表（人民币值）"
   }
 }

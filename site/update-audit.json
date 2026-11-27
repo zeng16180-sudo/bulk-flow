@@ -1,29 +1,29 @@
 {
   "checked": "2026-11-27",
-  "checkedAt": "2026-11-27T09:53:23+08:00",
+  "checkedAt": "2026-11-27T16:25:51+08:00",
   "sources": {
     "BDI": {
-      "result": "updated",
+      "result": "unchanged",
       "period": "2026-11-27",
-      "previousPeriod": "2026-11-26",
+      "previousPeriod": "2026-11-27",
       "verifiedPeriod": "2026-11-27"
     },
     "BCI": {
-      "result": "updated",
+      "result": "unchanged",
       "period": "2026-11-27",
-      "previousPeriod": "2026-11-26",
+      "previousPeriod": "2026-11-27",
       "verifiedPeriod": "2026-11-27"
     },
     "BPI": {
-      "result": "updated",
+      "result": "unchanged",
       "period": "2026-11-27",
-      "previousPeriod": "2026-11-26",
+      "previousPeriod": "2026-11-27",
       "verifiedPeriod": "2026-11-27"
     },
     "BSI": {
-      "result": "updated",
+      "result": "unchanged",
       "period": "2026-11-27",
-      "previousPeriod": "2026-11-26",
+      "previousPeriod": "2026-11-27",
       "verifiedPeriod": "2026-11-27"
     },
     "us": {
@@ -39,11 +39,11 @@
       "verifiedPeriod": "2026-10"
     },
     "china": {
-      "result": "unchanged",
+      "result": "updated",
       "period": "黃豆 2026-10 · 鐵礦砂 2026-10",
       "previousPeriod": "黃豆 2026-10 · 鐵礦砂 2026-10",
       "verifiedPeriod": "黃豆 2026-10 · 鐵礦砂 2026-10",
-      "detail": "黃豆：中國海關快訊／鋼之家轉載 · 鐵礦砂：中國海關快訊／鋼之家轉載 · 商務部轉載兩項皆有資料至 2026-09"
+      "detail": "黃豆：中國海關／商務部官方轉載 · 鐵礦砂：中國海關／商務部官方轉載"
     },
     "steel": {
       "result": "unchanged",
