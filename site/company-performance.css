@@ -1,0 +1,180 @@
+.company-performance {
+  --cp-revenue: #166e79;
+  --cp-freight: #996016;
+  --cp-paper: #f6f8f9;
+  min-width: 0;
+  margin: 0 0 34px;
+  padding: clamp(16px, 2.6vw, 30px);
+  border-top: 3px solid var(--accent);
+}
+
+.company-performance-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 18px;
+  padding-bottom: 21px;
+}
+
+.company-performance-head h2 { margin: 0 0 7px; }
+.company-performance-head p { margin: 0; color: var(--muted); font-size: .95rem; }
+.cp-company-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  color: var(--muted);
+  font-size: .9rem;
+}
+.cp-company-field select {
+  min-height: 43px;
+  min-width: 160px;
+  padding: 8px 32px 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--text);
+}
+
+.cp-layout {
+  display: grid;
+  grid-template-columns: minmax(210px, 238px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.cp-fleet {
+  padding: 16px;
+  background: var(--cp-paper);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+}
+
+.cp-fleet h3, .cp-chart-heading h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.cp-fleet-summary, .cp-basis, .cp-foot p {
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.55;
+}
+.cp-fleet-summary { margin: 8px 0 13px; }
+.cp-markets { display: grid; gap: 7px; }
+
+.cp-market {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 8px;
+  text-align: left;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 9px 10px;
+  width: 100%;
+}
+.cp-market strong { font-size: .93rem; }
+.cp-market small, .cp-market-share { color: var(--muted); font-size: .83rem; }
+.cp-market small { grid-column: 1 / -1; }
+.cp-market[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--soft);
+}
+.cp-market[aria-pressed="true"] strong { color: var(--accent); }
+.cp-basis { margin: 13px 0 8px; }
+.cp-fleet a, .cp-links a { font-size: .86rem; }
+
+.cp-metrics {
+  display: grid;
+  grid-template-columns: .85fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.cp-metrics > div {
+  display: flex;
+  flex-direction: column;
+  min-height: 91px;
+  align-items: start;
+  justify-content: center;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--cp-paper);
+}
+.cp-metrics span, .cp-metrics small, .cp-chart-heading > span {
+  color: var(--muted);
+  font-size: .86rem;
+  line-height: 1.4;
+}
+.cp-metrics strong {
+  margin: 3px 0;
+  font-size: clamp(1.02rem, 1.8vw, 1.4rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+.cp-revenue-stat strong, #cp-revenue-title { color: var(--cp-revenue); }
+.cp-freight-stat strong, #cp-freight-title { color: var(--cp-freight); }
+
+.cp-chart {
+  min-width: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 4px 0 5px;
+}
+.cp-chart + .cp-chart { margin-top: 8px; }
+.cp-chart-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 1px 2px;
+}
+.cp-chart-plot { min-height: 150px; }
+.cp-chart-plot svg { width: 100%; display: block; }
+.cp-gridline { stroke: #dbe4e8; }
+.cp-gridline.zero { stroke: #9baeb7; stroke-dasharray: 3 4; }
+.cp-axis { font-size: 12px; fill: var(--muted); }
+.cp-cursor { stroke: #80959d; stroke-dasharray: 3 4; }
+.cp-empty {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  min-height: 150px;
+  padding: 12px;
+  border-radius: 5px;
+  background: var(--cp-paper);
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.55;
+}
+.cp-inspect {
+  display: grid;
+  grid-template-columns: auto minmax(80px, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+  color: var(--muted);
+  font-size: .86rem;
+}
+.cp-inspect input { width: 100%; accent-color: var(--accent); }
+.cp-foot p { margin: 0 0 5px; }
+.cp-links { display: flex; gap: 5px 18px; flex-wrap: wrap; }
+
+@media (max-width: 760px) {
+  .cp-layout { grid-template-columns: 1fr; gap: 16px; }
+  .cp-markets { grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)); }
+  .cp-market { grid-template-columns: minmax(0, 1fr); }
+  .cp-fleet { padding: 13px; }
+}
+
+@media (max-width: 490px) {
+  .company-performance-head { flex-direction: column; gap: 13px; }
+  .cp-company-field { width: 100%; }
+  .cp-company-field select { width: 100%; }
+  .cp-metrics { gap: 5px; }
+  .cp-metrics > div { padding: 7px 5px; }
+  .cp-metrics span, .cp-metrics small { font-size: .78rem; }
+  .cp-inspect { grid-template-columns: auto 1fr; row-gap: 4px; }
+  #cp-date-range { grid-column: 2; }
+}

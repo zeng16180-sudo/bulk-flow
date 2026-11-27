@@ -83,7 +83,51 @@
   $('#fleet-notes').innerHTML = C.companies.map(c =>
     `<li><strong>${esc(c.name)}</strong>　${esc(c.note)} ${a(c.url,'來源')}</li>`).join('');
 
-  set('#daily-check-date', audit.checked ? '最近自動檢查 ' + date(audit.checked) : '等待首次自動檢查');
+  const equityMarket = window.FLOW_EQUITY_MARKET;
+  const marketChecks = equityMarket?.checks;
+  const financials = window.FLOW_EQUITY_RESEARCH;
+  const monthlyRevenue = window.FLOW_COMPANY_PERFORMANCE;
+  const checkedLabels = [
+    audit.checked ? '貨流等來源 ' + date(audit.checked) : '',
+    marketChecks?.checkedAt ? '航商交易資料 ' + date(marketChecks.checkedAt.slice(0,16)).replace('T',' ') : '',
+  ].filter(Boolean);
+  set('#daily-check-date', checkedLabels.length ? '最近查核 · ' + checkedLabels.join(' · ') : '等待首次查核');
+  const stockReports = [
+    ['quotes','收盤價與成交量'],
+    ['valuation','本益比、股價淨值比與殖利率'],
+    ['institutions','三大法人買賣超'],
+    ['margin','融資融券餘額'],
+  ];
+  const stockStatuses = {updated:'已核驗更新',unchanged:'已核驗 · 已同步',waiting:'留存有效資料 · 待重試'};
+  const stockRows = Object.entries(equityMarket?.sources || {}).flatMap(([market,sources]) => {
+    const companyRows = Object.entries(equityMarket.companies)
+      .filter(([code]) => financials?.companies?.[code]?.market===market)
+      .map(([,company])=>company);
+    const venue = market==='TWSE' ? '證交所' : '櫃買中心';
+    return stockReports.map(([key,label])=>{
+      const dates = [...new Set(companyRows.map(m=>Object.keys(m[key]).sort().at(-1)).filter(Boolean))].sort();
+      const last = dates.length>1 ? date(dates[0])+' ～ '+date(dates.at(-1)) : date(dates[0]);
+      const check = marketChecks?.markets?.[market]?.[key];
+      const note = [
+        check?.officialDay ? '本次核驗 '+date(check.officialDay) : '',
+        check?.pending ? check.pending+' 個交易日待補' : '',
+      ].filter(Boolean).join(' · ');
+      return [market+'-'+key,'航商'+label+' · '+venue,sources[key],'交易日',last,{
+        label:check ? stockStatuses[check.result] : '已核對 · 初始資料',
+        issue:check?.result==='waiting',message:note,
+      }];
+    });
+  });
+  const companySnapshots = [];
+  const filingDates = financials?.financialWindow;
+  if (filingDates?.length===2) companySnapshots.push([
+    'company-financials','航商財報與財務比率 · 公開資訊觀測站','https://mopsfin.twse.com.tw/',
+    '季度',filingDates.map(period=>period.replace('-Q',' Q')).join(' ～ '),{label:'本版資料已核對'},
+  ]);
+  if (monthlyRevenue?.through) companySnapshots.push([
+    'company-revenue','航商月營收 · 公開資訊觀測站','https://mops.twse.com.tw/mops/#/web/t21sc03',
+    '月度',date(monthlyRevenue.from)+' ～ '+date(monthlyRevenue.through),{label:'本版資料已核對'},
+  ]);
   const reporting = [
     ...Object.entries(window.FLOW_FREIGHT_INDICES).map(([key,x]) => [key, key + ' · 東方財富公開轉載',x.sourceUrl,'交易日',x.rows.at(-1).date]),
     ['us','美國海運出口檢驗 · USDA FGIS',D.usSource,'週度',D.usPeriod],
@@ -94,14 +138,18 @@
     ['vale','Vale 鐵礦砂產銷',vale.source,'季度',vale.period],
     ['wasde','WASDE 消耗、庫存、進口預測',G.forecast.sourceGrain,'月度',G.forecast.reportDate],
     ['bimco','BIMCO 全球散裝船展望',latest.officialUrl,'季度',latest.published],
+    ...stockRows,
+    ...companySnapshots,
     ...C.companies.map(c => [c.name,c.name,c.url,'不定期',c.basis])
   ];
   const statusLabel = {updated:'已核驗更新',unchanged:'已檢查 · 未見新值',review:'待查證 · 保留舊值',error:'未成功取得 · 保留舊值'};
-  $('#source-rows').innerHTML = reporting.map(([key, name, url, frequency, period]) => {
+  $('#source-rows').innerHTML = reporting.map(([key, name, url, frequency, period, customStatus]) => {
     const item = audit.sources[key];
-    const issue = item && ['error','review'].includes(item.result);
+    const issue = customStatus?.issue ?? (item && ['error','review'].includes(item.result));
+    const label = customStatus?.label ?? (item ? statusLabel[item.result] : '待檢查');
+    const message = customStatus?.message ?? item?.message;
     return `<tr><td>${a(url,name)}</td><td>${frequency}</td><td>${esc(period)}</td><td>
-      <span class="status ${issue?'partial':''}">${item?statusLabel[item.result]:'待檢查'}</span>
-      ${item?.message?`<small>${esc(item.message)}</small>`:''}</td></tr>`;
+      <span class="status ${issue?'partial':''}">${esc(label)}</span>
+      ${message?`<small>${esc(message)}</small>`:''}</td></tr>`;
   }).join('');
 })();
