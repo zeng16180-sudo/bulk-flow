@@ -1,27 +1,27 @@
 {
-  "checked": "2026-11-27",
-  "checkedAt": "2026-11-27T16:25:51+08:00",
+  "checked": "2026-11-28",
+  "checkedAt": "2026-11-28T15:44:58+08:00",
   "sources": {
     "BDI": {
-      "result": "unchanged",
+      "result": "updated",
       "period": "2026-11-27",
       "previousPeriod": "2026-11-27",
       "verifiedPeriod": "2026-11-27"
     },
     "BCI": {
-      "result": "unchanged",
+      "result": "updated",
       "period": "2026-11-27",
       "previousPeriod": "2026-11-27",
       "verifiedPeriod": "2026-11-27"
     },
     "BPI": {
-      "result": "unchanged",
+      "result": "updated",
       "period": "2026-11-27",
       "previousPeriod": "2026-11-27",
       "verifiedPeriod": "2026-11-27"
     },
     "BSI": {
-      "result": "unchanged",
+      "result": "updated",
       "period": "2026-11-27",
       "previousPeriod": "2026-11-27",
       "verifiedPeriod": "2026-11-27"
@@ -33,13 +33,16 @@
       "verifiedPeriod": "2026-11-19"
     },
     "brazil": {
-      "result": "unchanged",
-      "period": "2026-10",
+      "result": "error",
+      "message": "HTTPError: HTTP Error 500: Internal Server Error",
+      "temporary": true,
       "previousPeriod": "2026-10",
-      "verifiedPeriod": "2026-10"
+      "period": "2026-10",
+      "verifiedPeriod": null,
+      "temporaryFailureDays": 1
     },
     "china": {
-      "result": "updated",
+      "result": "unchanged",
       "period": "黃豆 2026-10 · 鐵礦砂 2026-10",
       "previousPeriod": "黃豆 2026-10 · 鐵礦砂 2026-10",
       "verifiedPeriod": "黃豆 2026-10 · 鐵礦砂 2026-10",
@@ -104,11 +107,9 @@
       "detail": "官網未標示全船隊基準日，按可讀名冊或分類合計比對"
     },
     "新興": {
-      "result": "error",
-      "message": "ValueError: Sincere type rows and summary unavailable",
-      "temporary": false,
-      "previousPeriod": null,
+      "result": "unchanged",
       "period": null,
+      "previousPeriod": null,
       "verifiedPeriod": null,
       "vesselCount": 15,
       "previousVesselCount": 15,
@@ -133,11 +134,9 @@
       "detail": "官網未標示全船隊基準日，按可讀名冊或分類合計比對"
     },
     "正德": {
-      "result": "error",
-      "message": "ValueError: Franbo roster does not match official vessel count",
-      "temporary": false,
-      "previousPeriod": null,
+      "result": "unchanged",
       "period": null,
+      "previousPeriod": null,
       "verifiedPeriod": null,
       "vesselCount": 17,
       "previousVesselCount": 17,
